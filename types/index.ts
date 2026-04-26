@@ -13,6 +13,7 @@ export interface Location {
   lng: number;
   description: string;
   image?: string;
+  driveTime?: string;
   links: TouristLink[];
 }
 

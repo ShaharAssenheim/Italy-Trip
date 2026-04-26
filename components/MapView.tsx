@@ -119,6 +119,11 @@ export default function MapView({ days, selectedDay, onSelectDay }: Props) {
                   <p style={{ margin: '0.1rem 0 0', fontSize: '0.72rem', color: '#78716c' }}>
                     {loc.description}
                   </p>
+                  {loc.driveTime && (
+                    <p style={{ margin: '0.35rem 0 0', fontSize: '0.68rem', color: '#a8a29e', display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
+                      🚗 {loc.driveTime}
+                    </p>
+                  )}
 
                   {loc.links.length > 0 && (
                     <div style={{ marginTop: '0.5rem', display: 'flex', flexDirection: 'column', gap: '0.2rem' }}>

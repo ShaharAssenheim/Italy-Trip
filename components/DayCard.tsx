@@ -76,6 +76,23 @@ export default function DayCard({ day, isOpen, onToggle }: Props) {
                 ))}
               </div>
 
+              {/* Drive times */}
+              {day.locations.some((l) => l.driveTime) && (
+                <div className="space-y-1.5">
+                  <p className="text-[10px] font-semibold uppercase tracking-widest text-stone-400">
+                    זמן נסיעה משוער
+                  </p>
+                  {day.locations.filter((l) => l.driveTime).map((loc) => (
+                    <div key={loc.id} className="flex items-center gap-2 text-[12px]">
+                      <span className="text-base leading-none">🚗</span>
+                      <span className="font-medium text-stone-700">{loc.nameHe}</span>
+                      <span className="text-stone-300">—</span>
+                      <span className="text-stone-500">{loc.driveTime}</span>
+                    </div>
+                  ))}
+                </div>
+              )}
+
               {/* Schedule or flexible options */}
               {day.isFlexible ? (
                 <div className="grid grid-cols-2 gap-2">
