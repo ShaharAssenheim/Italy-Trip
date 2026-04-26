@@ -4,9 +4,9 @@ import { useEffect, useRef } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import { Day, Location } from '@/types';
+import { Day } from '@/types';
 
-// Fix Leaflet default icon paths broken by Webpack
+// Leaflet's default icon URLs break with Webpack — point to CDN instead
 delete (L.Icon.Default.prototype as unknown as Record<string, unknown>)._getIconUrl;
 L.Icon.Default.mergeOptions({
   iconRetinaUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
@@ -15,22 +15,18 @@ L.Icon.Default.mergeOptions({
 });
 
 function createDayIcon(day: Day) {
-  const svg = `
-    <div style="
-      width:38px; height:38px;
+  return L.divIcon({
+    html: `<div style="
+      width:38px;height:38px;
       background:${day.color};
       border-radius:50%;
       border:3px solid white;
       box-shadow:0 3px 14px rgba(0,0,0,0.35);
-      display:flex; align-items:center; justify-content:center;
-      font-size:14px; font-weight:900; color:white;
+      display:flex;align-items:center;justify-content:center;
+      font-size:14px;font-weight:900;color:white;
       font-family:'Heebo',sans-serif;
       cursor:pointer;
-      transition:transform .15s;
-    ">${day.id}</div>`;
-
-  return L.divIcon({
-    html: svg,
+    ">${day.id}</div>`,
     className: '',
     iconSize: [38, 38],
     iconAnchor: [19, 19],
@@ -38,14 +34,7 @@ function createDayIcon(day: Day) {
   });
 }
 
-/* Flies map to the selected day's bounds */
-function FlyController({
-  selectedDay,
-  days,
-}: {
-  selectedDay: number | null;
-  days: Day[];
-}) {
+function FlyController({ selectedDay, days }: { selectedDay: number | null; days: Day[] }) {
   const map = useMap();
   const prevDay = useRef<number | null>(null);
 
@@ -54,15 +43,12 @@ function FlyController({
     prevDay.current = selectedDay;
 
     const day = days.find((d) => d.id === selectedDay);
-    if (!day) return;
+    if (!day?.locations.length) return;
 
-    const locs = day.locations;
-    if (locs.length === 0) return;
-
-    if (locs.length === 1) {
-      map.flyTo([locs[0].lat, locs[0].lng], 13, { duration: 1.1 });
+    if (day.locations.length === 1) {
+      map.flyTo([day.locations[0].lat, day.locations[0].lng], 13, { duration: 1.1 });
     } else {
-      const bounds = L.latLngBounds(locs.map((l) => [l.lat, l.lng]));
+      const bounds = L.latLngBounds(day.locations.map((l) => [l.lat, l.lng]));
       map.flyToBounds(bounds, { padding: [70, 70], duration: 1.1 });
     }
   }, [selectedDay, days, map]);
@@ -78,12 +64,7 @@ interface Props {
 
 export default function MapView({ days, selectedDay, onSelectDay }: Props) {
   return (
-    <MapContainer
-      center={[45.72, 10.78]}
-      zoom={10}
-      className="h-full w-full"
-      zoomControl={true}
-    >
+    <MapContainer center={[45.72, 10.78]} zoom={10} className="h-full w-full">
       <TileLayer
         url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
         attribution="© OpenStreetMap © CARTO"
@@ -94,39 +75,52 @@ export default function MapView({ days, selectedDay, onSelectDay }: Props) {
       <FlyController selectedDay={selectedDay} days={days} />
 
       {days.map((day) =>
-        day.locations.map((loc: Location) => (
+        day.locations.map((loc) => (
           <Marker
             key={loc.id}
             position={[loc.lat, loc.lng]}
             icon={createDayIcon(day)}
             eventHandlers={{ click: () => onSelectDay(day.id) }}
           >
-            <Popup className="italy-popup">
+            <Popup>
               <div
-                className="overflow-hidden rounded-xl"
-                style={{ direction: 'rtl', fontFamily: 'Heebo, sans-serif', minWidth: 180 }}
+                style={{
+                  direction: 'rtl',
+                  fontFamily: 'Heebo, sans-serif',
+                  minWidth: 180,
+                  overflow: 'hidden',
+                  borderRadius: '0.75rem',
+                }}
               >
                 <div style={{ background: day.color, height: 5 }} />
-                <div className="p-3">
+                <div style={{ padding: '0.75rem' }}>
                   <p
-                    style={{ color: day.color }}
-                    className="text-xs font-bold uppercase tracking-widest"
+                    style={{
+                      color: day.color,
+                      fontSize: '0.65rem',
+                      fontWeight: 700,
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.1em',
+                    }}
                   >
                     {day.emoji} יום {day.id}
                   </p>
-                  <p className="mt-1 text-base font-extrabold text-gray-800">{loc.nameHe}</p>
-                  <p className="mt-0.5 text-xs text-gray-500">{loc.description}</p>
+                  <p style={{ marginTop: '0.25rem', fontSize: '1rem', fontWeight: 800, color: '#1c1917' }}>
+                    {loc.nameHe}
+                  </p>
+                  <p style={{ marginTop: '0.125rem', fontSize: '0.75rem', color: '#78716c' }}>
+                    {loc.description}
+                  </p>
 
                   {loc.links.length > 0 && (
-                    <div className="mt-2 flex flex-col gap-1">
+                    <div style={{ marginTop: '0.5rem', display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
                       {loc.links.map((link) => (
                         <a
                           key={link.id}
                           href={link.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-xs font-medium underline"
-                          style={{ color: day.color }}
+                          style={{ fontSize: '0.75rem', fontWeight: 500, color: day.color }}
                         >
                           {link.title}
                         </a>
@@ -139,7 +133,6 @@ export default function MapView({ days, selectedDay, onSelectDay }: Props) {
           </Marker>
         ))
       )}
-
     </MapContainer>
   );
 }

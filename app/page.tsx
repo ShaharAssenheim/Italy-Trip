@@ -31,11 +31,11 @@ export default function HomePage() {
       <Header />
 
       {/* ltr wrapper keeps map on left, sidebar on right regardless of RTL */}
-      <main className="flex flex-1 overflow-hidden" style={{ direction: 'ltr' }}>
-        <div className="flex-1 overflow-hidden">
+      <main className="flex flex-1 flex-col overflow-hidden sm:flex-row" style={{ direction: 'ltr' }}>
+        <div className="h-[45vh] flex-shrink-0 sm:h-auto sm:flex-1 overflow-hidden">
           <MapView days={days} selectedDay={selectedDay} onSelectDay={handleSelectDay} />
         </div>
-        <div className="w-[400px] flex-shrink-0 overflow-hidden" style={{ direction: 'rtl' }}>
+        <div className="flex-1 overflow-y-auto sm:w-[400px] sm:flex-none" style={{ direction: 'rtl' }}>
           <Sidebar days={days} selectedDay={selectedDay} onSelectDay={handleSelectDay} />
         </div>
       </main>

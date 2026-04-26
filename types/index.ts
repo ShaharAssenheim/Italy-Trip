@@ -1,13 +1,3 @@
-export interface Hotel {
-  id: string;
-  name: string;
-  nameHe: string;
-  lat: number;
-  lng: number;
-  nights: string;
-  googleMapsUrl: string;
-}
-
 export interface TouristLink {
   id: string;
   title: string;
@@ -27,7 +17,6 @@ export interface Location {
 
 export interface ScheduleItem {
   text: string;
-  time?: string;
 }
 
 export interface FlexOption {
@@ -36,7 +25,6 @@ export interface FlexOption {
 }
 
 export interface DayHotel {
-  name: string;
   nameHe: string;
   googleMapsUrl: string;
 }
@@ -46,7 +34,6 @@ export interface Day {
   emoji: string;
   title: string;
   color: string;
-  accentColor: string;
   tags: string[];
   schedule: ScheduleItem[];
   tip: string;

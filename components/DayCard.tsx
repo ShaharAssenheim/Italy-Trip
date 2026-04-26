@@ -14,11 +14,11 @@ export default function DayCard({ day, isOpen, onToggle }: Props) {
   return (
     <motion.div
       layout
-      className="border-b border-stone-100 cursor-pointer"
+      className="cursor-pointer border-b border-stone-100"
       style={{ borderRight: isOpen ? `3px solid ${day.color}` : '3px solid transparent' }}
       onClick={onToggle}
     >
-      {/* ── Header row ── */}
+      {/* Header row */}
       <div className="flex items-center gap-3 px-5 py-4">
         <motion.div
           className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full text-xl text-white shadow-md"
@@ -29,7 +29,7 @@ export default function DayCard({ day, isOpen, onToggle }: Props) {
           {day.emoji}
         </motion.div>
 
-        <div className="flex-1 min-w-0">
+        <div className="min-w-0 flex-1">
           <p className="text-[11px] font-bold uppercase tracking-widest text-stone-400">
             יום {day.id}
           </p>
@@ -45,7 +45,7 @@ export default function DayCard({ day, isOpen, onToggle }: Props) {
         </motion.div>
       </div>
 
-      {/* ── Expanded body ── */}
+      {/* Expanded body */}
       <AnimatePresence initial={false}>
         {isOpen && (
           <motion.div
@@ -57,7 +57,7 @@ export default function DayCard({ day, isOpen, onToggle }: Props) {
             style={{ overflow: 'hidden' }}
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="px-5 pb-5 pt-1 space-y-4">
+            <div className="space-y-4 px-5 pb-5 pt-1">
               {/* Tags */}
               <div className="flex flex-wrap gap-1.5">
                 {day.tags.map((tag) => (
@@ -76,30 +76,21 @@ export default function DayCard({ day, isOpen, onToggle }: Props) {
                 ))}
               </div>
 
-              {/* Schedule or Flexible options */}
+              {/* Schedule or flexible options */}
               {day.isFlexible ? (
                 <div className="grid grid-cols-2 gap-2">
                   {[day.optionA!, day.optionB!].map((opt) => (
                     <div
                       key={opt.title}
                       className="rounded-xl border p-3"
-                      style={{
-                        borderColor: `${day.color}30`,
-                        background: `${day.color}08`,
-                      }}
+                      style={{ borderColor: `${day.color}30`, background: `${day.color}08` }}
                     >
-                      <p
-                        className="mb-2 text-[11px] font-bold"
-                        style={{ color: day.color }}
-                      >
+                      <p className="mb-2 text-[11px] font-bold" style={{ color: day.color }}>
                         {opt.title}
                       </p>
                       <ul className="space-y-1">
                         {opt.items.map((item) => (
-                          <li
-                            key={item}
-                            className="flex items-start gap-1.5 text-[12px] text-stone-600"
-                          >
+                          <li key={item} className="flex items-start gap-1.5 text-[12px] text-stone-600">
                             <span
                               className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full"
                               style={{ background: day.color }}
@@ -131,13 +122,13 @@ export default function DayCard({ day, isOpen, onToggle }: Props) {
                 </ul>
               )}
 
-              {/* Locations with links */}
+              {/* Links */}
               {day.locations.some((l) => l.links.length > 0) && (
                 <div className="space-y-2">
                   <p className="text-[11px] font-semibold uppercase tracking-widest text-stone-400">
                     קישורים שימושיים
                   </p>
-                  {day.locations.map((loc) =>
+                  {day.locations.flatMap((loc) =>
                     loc.links.map((link) => (
                       <a
                         key={link.id}
@@ -160,10 +151,7 @@ export default function DayCard({ day, isOpen, onToggle }: Props) {
               {/* Tip */}
               <div
                 className="flex items-start gap-2 rounded-lg p-3 text-[12px] italic leading-snug"
-                style={{
-                  background: '#fffbee',
-                  borderRight: '3px solid #d4a853',
-                }}
+                style={{ background: '#fffbee', borderRight: '3px solid #d4a853' }}
               >
                 <Lightbulb size={14} className="mt-0.5 flex-shrink-0 text-amber-500" />
                 <span className="text-amber-800">{day.tip}</span>

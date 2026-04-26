@@ -1,13 +1,12 @@
 import { Day } from '@/types';
 
-const SHERATON = {
-  name: 'Sheraton Milan Malpensa Airport Hotel & Conference Centre',
+const SHERATON: Day['hotel'] = {
   nameHe: 'שרתון מילאנו מלפנסה',
-  googleMapsUrl: 'https://maps.google.com/?q=Sheraton+Milan+Malpensa+Airport+Hotel+Conference+Centre',
+  googleMapsUrl:
+    'https://maps.google.com/?q=Sheraton+Milan+Malpensa+Airport+Hotel+Conference+Centre',
 };
 
-const DU_LAC = {
-  name: 'Du Lac et Du Parc Grand Resort',
+const DU_LAC: Day['hotel'] = {
   nameHe: 'דו לק א דו פארק — ריבה דל גארדה',
   googleMapsUrl: 'https://maps.google.com/?q=Du+Lac+et+Du+Parc+Grand+Resort+Riva+del+Garda',
 };
@@ -18,7 +17,6 @@ export const days: Day[] = [
     emoji: '✈️',
     title: 'הגעה למלפנסה — לילה במלון',
     color: '#4a3f7a',
-    accentColor: '#7a6aaa',
     tags: ['מלפנסה', 'הגעה', 'שרתון'],
     schedule: [
       { text: 'נחיתה בשדה התעופה מלפנסה' },
@@ -36,7 +34,12 @@ export const days: Day[] = [
         lng: 8.7226,
         description: 'שדה התעופה הבינלאומי של מילאנו',
         links: [
-          { id: 'mxp-map', title: 'Google Maps', url: 'https://maps.google.com/?q=Milan+Malpensa+Airport', type: 'map' },
+          {
+            id: 'mxp-map',
+            title: 'Google Maps',
+            url: 'https://maps.google.com/?q=Milan+Malpensa+Airport',
+            type: 'map',
+          },
         ],
       },
     ],
@@ -46,7 +49,6 @@ export const days: Day[] = [
     emoji: '🚗',
     title: 'נסיעה + סירמיונה + הגעה לריבה',
     color: '#1a6b8a',
-    accentColor: '#4a9aba',
     tags: ['סירמיונה', 'ריבה דל גארדה', 'אגם גארדה'],
     schedule: [
       { text: 'נסיעה מהשדה צפונה לעבר אגם גארדה' },
@@ -64,8 +66,18 @@ export const days: Day[] = [
         lng: 10.6077,
         description: 'חצי אי ציורי עם טירה מימי הביניים',
         links: [
-          { id: 'sirmione-map', title: 'Google Maps', url: 'https://maps.google.com/?q=Sirmione,+Italy', type: 'map' },
-          { id: 'sirmione-castle', title: 'Rocca Scaligera (הטירה)', url: 'https://maps.google.com/?q=Rocca+Scaligera+Sirmione', type: 'other' },
+          {
+            id: 'sirmione-map',
+            title: 'Google Maps',
+            url: 'https://maps.google.com/?q=Sirmione,+Italy',
+            type: 'map',
+          },
+          {
+            id: 'sirmione-castle',
+            title: 'Rocca Scaligera (הטירה)',
+            url: 'https://maps.google.com/?q=Rocca+Scaligera+Sirmione',
+            type: 'other',
+          },
         ],
       },
       {
@@ -76,7 +88,12 @@ export const days: Day[] = [
         lng: 10.841,
         description: 'בסיס הטיול — עיר נמל בצפון האגם',
         links: [
-          { id: 'riva-map', title: 'Google Maps', url: 'https://maps.google.com/?q=Riva+del+Garda,+Italy', type: 'map' },
+          {
+            id: 'riva-map',
+            title: 'Google Maps',
+            url: 'https://maps.google.com/?q=Riva+del+Garda,+Italy',
+            type: 'map',
+          },
         ],
       },
     ],
@@ -86,7 +103,6 @@ export const days: Day[] = [
     emoji: '🦁',
     title: 'ספארי — Parco Natura Viva',
     color: '#8b5e1a',
-    accentColor: '#c4873a',
     tags: ['Parco Natura Viva', 'ספארי', 'גן חיות'],
     schedule: [
       { text: 'יציאה מוקדמת מריבה' },
@@ -105,8 +121,18 @@ export const days: Day[] = [
         lng: 10.8474,
         description: 'פארק ספארי וגן חיות ליד ורונה',
         links: [
-          { id: 'parco-map', title: 'Google Maps', url: 'https://maps.google.com/?q=Parco+Natura+Viva+Bussolengo', type: 'map' },
-          { id: 'parco-site', title: 'אתר רשמי', url: 'https://www.parconaturaviva.it', type: 'official' },
+          {
+            id: 'parco-map',
+            title: 'Google Maps',
+            url: 'https://maps.google.com/?q=Parco+Natura+Viva+Bussolengo',
+            type: 'map',
+          },
+          {
+            id: 'parco-site',
+            title: 'אתר רשמי',
+            url: 'https://www.parconaturaviva.it',
+            type: 'official',
+          },
         ],
       },
     ],
@@ -116,7 +142,6 @@ export const days: Day[] = [
     emoji: '🚠',
     title: 'יום גמיש — רכבל או מנוחה',
     color: '#3d7a55',
-    accentColor: '#5aaa78',
     tags: ['Monte Baldo', "מלצ'סינה", 'רכבל'],
     schedule: [],
     tip: "יום 'בולמי עומס' — לבחור לפי מצב הרוח בבוקר",
@@ -139,8 +164,18 @@ export const days: Day[] = [
         lng: 10.8667,
         description: 'רכבל עם נוף פנורמי על האגם',
         links: [
-          { id: 'baldo-map', title: 'Google Maps', url: 'https://maps.google.com/?q=Monte+Baldo+cable+car+Malcesine', type: 'map' },
-          { id: 'baldo-cable', title: 'אתר הרכבל', url: 'https://www.funiviedelbaldo.it', type: 'official' },
+          {
+            id: 'baldo-map',
+            title: 'Google Maps',
+            url: 'https://maps.google.com/?q=Monte+Baldo+cable+car+Malcesine',
+            type: 'map',
+          },
+          {
+            id: 'baldo-cable',
+            title: 'אתר הרכבל',
+            url: 'https://www.funiviedelbaldo.it',
+            type: 'official',
+          },
         ],
       },
       {
@@ -151,7 +186,12 @@ export const days: Day[] = [
         lng: 10.8079,
         description: 'עיירה ציורית על גדת האגם',
         links: [
-          { id: 'malcesine-map', title: 'Google Maps', url: 'https://maps.google.com/?q=Malcesine,+Italy', type: 'map' },
+          {
+            id: 'malcesine-map',
+            title: 'Google Maps',
+            url: 'https://maps.google.com/?q=Malcesine,+Italy',
+            type: 'map',
+          },
         ],
       },
     ],
@@ -161,7 +201,6 @@ export const days: Day[] = [
     emoji: '🏔️',
     title: 'אגם טובל — דולומיטים קלים',
     color: '#2d5f8a',
-    accentColor: '#4a85b5',
     tags: ['Lago di Tovel', 'דולומיטים', 'אגם טורקיז'],
     schedule: [
       { text: 'נסיעה לכיוון ההרים' },
@@ -180,7 +219,12 @@ export const days: Day[] = [
         lng: 10.9467,
         description: 'אגם טורקיז בלב הדולומיטים',
         links: [
-          { id: 'tovel-map', title: 'Google Maps', url: 'https://maps.google.com/?q=Lago+di+Tovel,+Italy', type: 'map' },
+          {
+            id: 'tovel-map',
+            title: 'Google Maps',
+            url: 'https://maps.google.com/?q=Lago+di+Tovel,+Italy',
+            type: 'map',
+          },
         ],
       },
     ],
@@ -190,7 +234,6 @@ export const days: Day[] = [
     emoji: '🚤',
     title: 'לימונה + שייט באגם',
     color: '#c4613a',
-    accentColor: '#e8956d',
     tags: ['לימונה סול גארדה', 'שייט', 'אגם גארדה'],
     schedule: [
       { text: 'שייט על האגם או נסיעה לאורך החוף' },
@@ -209,7 +252,12 @@ export const days: Day[] = [
         lng: 10.7922,
         description: 'כפר ים ציורי עם לימונים ונוף עוצר נשימה',
         links: [
-          { id: 'limone-map', title: 'Google Maps', url: 'https://maps.google.com/?q=Limone+sul+Garda,+Italy', type: 'map' },
+          {
+            id: 'limone-map',
+            title: 'Google Maps',
+            url: 'https://maps.google.com/?q=Limone+sul+Garda,+Italy',
+            type: 'map',
+          },
         ],
       },
     ],
@@ -217,9 +265,8 @@ export const days: Day[] = [
   {
     id: 7,
     emoji: '🛫',
-    title: "חזרה + אגם לדרו + מלפנסה",
+    title: 'חזרה + אגם לדרו + מלפנסה',
     color: '#6b3d8a',
-    accentColor: '#9a5aba',
     tags: ['Lago di Ledro', 'מלפנסה', 'חזרה הביתה'],
     schedule: [
       { text: "בוקר שקט — צ'ק אאוט מריבה" },
@@ -238,7 +285,12 @@ export const days: Day[] = [
         lng: 10.7319,
         description: 'תצפית קצרה — אגם שקט ומרהיב',
         links: [
-          { id: 'ledro-map', title: 'Google Maps', url: 'https://maps.google.com/?q=Lago+di+Ledro,+Italy', type: 'map' },
+          {
+            id: 'ledro-map',
+            title: 'Google Maps',
+            url: 'https://maps.google.com/?q=Lago+di+Ledro,+Italy',
+            type: 'map',
+          },
         ],
       },
       {
@@ -249,15 +301,14 @@ export const days: Day[] = [
         lng: 8.7226,
         description: 'שדה התעופה הבינלאומי של מילאנו',
         links: [
-          { id: 'mxp-dep-map', title: 'Google Maps', url: 'https://maps.google.com/?q=Milan+Malpensa+Airport', type: 'map' },
+          {
+            id: 'mxp-dep-map',
+            title: 'Google Maps',
+            url: 'https://maps.google.com/?q=Milan+Malpensa+Airport',
+            type: 'map',
+          },
         ],
       },
     ],
   },
 ];
-
-export const tripStats = {
-  days: 7,
-  destinations: 9,
-  gelatos: '∞',
-};
