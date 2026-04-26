@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "WebFetch(domain:commons.wikimedia.org)",
+      "Bash(curl -o /dev/null -s -w \"%{http_code} %{url_effective}\\\\n\" \"https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Italy_-_Sirmione_-_Scaligero_Castle.jpg/600px-Italy_-_Sirmione_-_Scaligero_Castle.jpg\" \"https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Milano_malpensa_terminal_1.JPG/600px-Milano_malpensa_terminal_1.JPG\" \"https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Lago_di_Tovel.JPG/600px-Lago_di_Tovel.JPG\")",
+      "WebFetch(domain:w.wiki)"
+    ]
+  }
+}

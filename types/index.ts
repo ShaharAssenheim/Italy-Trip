@@ -12,6 +12,7 @@ export interface Location {
   lat: number;
   lng: number;
   description: string;
+  image?: string;
   links: TouristLink[];
 }
 

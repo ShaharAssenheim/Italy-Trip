@@ -33,6 +33,7 @@ export const days: Day[] = [
         lat: 45.6306,
         lng: 8.7226,
         description: 'שדה התעופה הבינלאומי של מילאנו',
+        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Milano_malpensa_terminal_1.JPG/330px-Milano_malpensa_terminal_1.JPG',
         links: [
           {
             id: 'mxp-map',
@@ -65,6 +66,7 @@ export const days: Day[] = [
         lat: 45.4944,
         lng: 10.6077,
         description: 'חצי אי ציורי עם טירה מימי הביניים',
+        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Italy_-_Sirmione_-_Scaligero_Castle.jpg/330px-Italy_-_Sirmione_-_Scaligero_Castle.jpg',
         links: [
           {
             id: 'sirmione-map',
@@ -87,6 +89,7 @@ export const days: Day[] = [
         lat: 45.8847,
         lng: 10.841,
         description: 'בסיס הטיול — עיר נמל בצפון האגם',
+        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Riva_del_garda_from_Torre_Apponale.JPG/330px-Riva_del_garda_from_Torre_Apponale.JPG',
         links: [
           {
             id: 'riva-map',
@@ -120,6 +123,7 @@ export const days: Day[] = [
         lat: 45.3907,
         lng: 10.8474,
         description: 'פארק ספארי וגן חיות ליד ורונה',
+        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/ITALY_-_Tigre_Siberiana_-_Parco_Natura_Viva_-_Verona_1.JPG/330px-ITALY_-_Tigre_Siberiana_-_Parco_Natura_Viva_-_Verona_1.JPG',
         links: [
           {
             id: 'parco-map',
@@ -163,6 +167,7 @@ export const days: Day[] = [
         lat: 45.75,
         lng: 10.8667,
         description: 'רכבל עם נוף פנורמי על האגם',
+        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Monte-Baldo-Funivia-Bergstation-CTH.JPG/330px-Monte-Baldo-Funivia-Bergstation-CTH.JPG',
         links: [
           {
             id: 'baldo-map',
@@ -185,6 +190,7 @@ export const days: Day[] = [
         lat: 45.7669,
         lng: 10.8079,
         description: 'עיירה ציורית על גדת האגם',
+        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Malcesine%2C_on_the_Via_Lungolago.JPG/330px-Malcesine%2C_on_the_Via_Lungolago.JPG',
         links: [
           {
             id: 'malcesine-map',
@@ -218,6 +224,7 @@ export const days: Day[] = [
         lat: 46.2386,
         lng: 10.9467,
         description: 'אגם טורקיז בלב הדולומיטים',
+        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Lago_di_Tovel.JPG/330px-Lago_di_Tovel.JPG',
         links: [
           {
             id: 'tovel-map',
@@ -251,6 +258,7 @@ export const days: Day[] = [
         lat: 45.8114,
         lng: 10.7922,
         description: 'כפר ים ציורי עם לימונים ונוף עוצר נשימה',
+        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Limone_sul_Garda%2C_the_town.JPG/330px-Limone_sul_Garda%2C_the_town.JPG',
         links: [
           {
             id: 'limone-map',
@@ -284,6 +292,7 @@ export const days: Day[] = [
         lat: 45.8767,
         lng: 10.7319,
         description: 'תצפית קצרה — אגם שקט ומרהיב',
+        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Lago_di_Ledro_-_crystal-clear_water.JPG/330px-Lago_di_Ledro_-_crystal-clear_water.JPG',
         links: [
           {
             id: 'ledro-map',
@@ -300,6 +309,7 @@ export const days: Day[] = [
         lat: 45.6306,
         lng: 8.7226,
         description: 'שדה התעופה הבינלאומי של מילאנו',
+        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Milano_malpensa_terminal_1.JPG/330px-Milano_malpensa_terminal_1.JPG',
         links: [
           {
             id: 'mxp-dep-map',

@@ -87,42 +87,50 @@ export default function MapView({ days, selectedDay, onSelectDay }: Props) {
                 style={{
                   direction: 'rtl',
                   fontFamily: 'Heebo, sans-serif',
-                  minWidth: 180,
+                  width: 220,
                   overflow: 'hidden',
                   borderRadius: '0.75rem',
                 }}
               >
-                <div style={{ background: day.color, height: 5 }} />
-                <div style={{ padding: '0.75rem' }}>
+                {loc.image && (
+                  <img
+                    src={loc.image}
+                    alt={loc.nameHe}
+                    style={{ width: '100%', height: 120, objectFit: 'cover', display: 'block' }}
+                  />
+                )}
+                <div style={{ background: day.color, height: 4 }} />
+                <div style={{ padding: '0.6rem 0.75rem 0.75rem' }}>
                   <p
                     style={{
                       color: day.color,
-                      fontSize: '0.65rem',
+                      fontSize: '0.6rem',
                       fontWeight: 700,
                       textTransform: 'uppercase',
                       letterSpacing: '0.1em',
+                      margin: 0,
                     }}
                   >
                     {day.emoji} יום {day.id}
                   </p>
-                  <p style={{ marginTop: '0.25rem', fontSize: '1rem', fontWeight: 800, color: '#1c1917' }}>
+                  <p style={{ margin: '0.2rem 0 0', fontSize: '0.95rem', fontWeight: 800, color: '#1c1917' }}>
                     {loc.nameHe}
                   </p>
-                  <p style={{ marginTop: '0.125rem', fontSize: '0.75rem', color: '#78716c' }}>
+                  <p style={{ margin: '0.1rem 0 0', fontSize: '0.72rem', color: '#78716c' }}>
                     {loc.description}
                   </p>
 
                   {loc.links.length > 0 && (
-                    <div style={{ marginTop: '0.5rem', display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
+                    <div style={{ marginTop: '0.5rem', display: 'flex', flexDirection: 'column', gap: '0.2rem' }}>
                       {loc.links.map((link) => (
                         <a
                           key={link.id}
                           href={link.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          style={{ fontSize: '0.75rem', fontWeight: 500, color: day.color }}
+                          style={{ fontSize: '0.7rem', fontWeight: 600, color: day.color }}
                         >
-                          {link.title}
+                          ↗ {link.title}
                         </a>
                       ))}
                     </div>
