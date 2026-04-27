@@ -1,3 +1,16 @@
+export type RecommendationCategory = 'place' | 'food' | 'restaurant';
+
+export interface Recommendation {
+  id: string;
+  category: RecommendationCategory;
+  name: string;
+  description: string;
+  tiktokUrl?: string;
+  imageUrl?: string;
+  linkUrl?: string;
+  linkLabel?: string;
+}
+
 export interface TouristLink {
   id: string;
   title: string;
@@ -38,7 +51,7 @@ export interface Day {
   color: string;
   tags: string[];
   schedule: ScheduleItem[];
-  tip: string;
+  tip?: string;
   locations: Location[];
   hotel?: DayHotel;
   isFlexible?: boolean;

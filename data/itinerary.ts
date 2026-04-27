@@ -23,7 +23,6 @@ export const days: Day[] = [
       { text: 'צ׳ק אין לשרתון מילאנו מלפנסה' },
       { text: 'מנוחה לקראת הטיול' },
     ],
-    tip: 'יום הגעה — לנוח טוב לקראת ימי הטיול',
     hotel: SHERATON,
     locations: [
       {
@@ -53,11 +52,13 @@ export const days: Day[] = [
     color: '#1a6b8a',
     tags: ['סירמיונה', 'ריבה דל גארדה', 'אגם גארדה'],
     schedule: [
-      { text: 'נסיעה מהשדה צפונה לעבר אגם גארדה' },
-      { text: 'עצירה בסירמיונה (2–3 שעות): טירה, סמטאות, גלידה' },
-      { text: 'המשך לריבה דל גארדה — התמקמות במלון' },
+      { text: 'ארוחת בוקר במלון ואיסוף הרכב' },
+      { text: '10:00 — יציאה לכיוון סירמיונה' },
+      { text: '12:00 — הגעה לסירמיונה: סיור רגוע בעיר העתיקה, שיטוט בסמטאות, עצירה ליד הטירה, ארוחת צהריים במסעדה מקומית' },
+      { text: '14:00 — יציאה צפונה לכיוון ריבה דל גארדה' },
+      { text: '15:30–16:30 — הגעה למלון דו לק והתמקמות' },
+
     ],
-    tip: 'יום מעבר נעים — לא לדחוק, להתחיל בקצב רגוע',
     hotel: DU_LAC,
     locations: [
       {
@@ -111,12 +112,13 @@ export const days: Day[] = [
     color: '#8b5e1a',
     tags: ['Parco Natura Viva', 'ספארי', 'גן חיות'],
     schedule: [
-      { text: 'יציאה מוקדמת מריבה' },
-      { text: 'ספארי ברכב — נסיעה בין בעלי החיים' },
-      { text: 'גן חיות רגלי עם מינים נדירים' },
-      { text: 'חזרה למלון + מנוחה מוקדמת' },
+      { text: 'ארוחת בוקר במלון בריבה דל גארדה' },
+      { text: '08:30–09:00 — יציאה לכיוון Parco Natura Viva' },
+      { text: '10:30 — הגעה לפארק: ספארי ברכב בין החיות' },
+      { text: 'סיור רגלי בגן החיות בקצב רגוע' },
+      { text: 'ארוחת צהריים קלה במקום או באזור' },
+      { text: '14:30–15:00 — נסיעה חזרה לריבה דל גארדה' },
     ],
-    tip: 'יום אחד "גדול" בלבד — שאר הימים הרבה יותר רגועים',
     hotel: DU_LAC,
     locations: [
       {
@@ -147,61 +149,32 @@ export const days: Day[] = [
   },
   {
     id: 4,
-    emoji: '🚠',
-    title: 'יום גמיש — רכבל או מנוחה',
+    emoji: '🏖️',
+    title: 'יום רגוע — ריבה דל גארדה',
     color: '#3d7a55',
-    tags: ['Monte Baldo', "מלצ'סינה", 'רכבל'],
-    schedule: [],
-    tip: "יום 'בולמי עומס' — לבחור לפי מצב הרוח בבוקר",
+    tags: ['ריבה דל גארדה', 'טיילת', 'ספא'],
+    schedule: [
+      { text: 'ארוחת בוקר במלון בריבה דל גארדה' },
+      { text: 'הליכה בטיילת האגם ועצירה בגני משחקים' },
+      { text: 'ישיבה מול האגם בקצב רגוע' },
+      { text: 'ארוחת צהריים קלילה באחת המסעדות המקומיות' },
+      { text: 'חזרה למלון — מנוחה ושימוש במתקני הספא, בריכות ומסאז׳ים' },
+    ],
     hotel: DU_LAC,
-    isFlexible: true,
-    optionA: {
-      title: "A — רכבל ומלצ'סינה",
-      items: ['רכבל למונטה באלדו', 'נוף פנורמי ופתוח', "ירידה למלצ'סינה", 'טיול קצר + גלידה'],
-    },
-    optionB: {
-      title: 'B — יום רגוע בריבה',
-      items: ['טיילת האגם', 'חוף / מים רדודים', 'פארק וגלידות', 'מנוחה במלון'],
-    },
     locations: [
       {
-        id: 'monte-baldo',
-        name: 'Monte Baldo',
-        nameHe: 'מונטה באלדו',
-        lat: 45.75,
-        lng: 10.8667,
-        description: 'רכבל עם נוף פנורמי על האגם',
-        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Monte-Baldo-Funivia-Bergstation-CTH.JPG/330px-Monte-Baldo-Funivia-Bergstation-CTH.JPG',
-        driveTime: 'כ-30 דקות מריבה דל גארדה',
+        id: 'riva-del-garda-day4',
+        name: 'Riva del Garda',
+        nameHe: 'ריבה דל גארדה',
+        lat: 45.8847,
+        lng: 10.841,
+        description: 'טיילת האגם, גני משחקים וספא במלון',
+        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Riva_del_garda_from_Torre_Apponale.JPG/330px-Riva_del_garda_from_Torre_Apponale.JPG',
         links: [
           {
-            id: 'baldo-map',
+            id: 'riva-day4-map',
             title: 'Google Maps',
-            url: 'https://maps.google.com/?q=Monte+Baldo+cable+car+Malcesine',
-            type: 'map',
-          },
-          {
-            id: 'baldo-cable',
-            title: 'אתר הרכבל',
-            url: 'https://www.funiviedelbaldo.it',
-            type: 'official',
-          },
-        ],
-      },
-      {
-        id: 'malcesine',
-        name: 'Malcesine',
-        nameHe: "מלצ'סינה",
-        lat: 45.7669,
-        lng: 10.8079,
-        description: 'עיירה ציורית על גדת האגם',
-        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Malcesine%2C_on_the_Via_Lungolago.JPG/330px-Malcesine%2C_on_the_Via_Lungolago.JPG',
-        driveTime: 'צמודה לתחנת הרכבל',
-        links: [
-          {
-            id: 'malcesine-map',
-            title: 'Google Maps',
-            url: 'https://maps.google.com/?q=Malcesine,+Italy',
+            url: 'https://maps.google.com/?q=Riva+del+Garda,+Italy',
             type: 'map',
           },
         ],
@@ -215,12 +188,12 @@ export const days: Day[] = [
     color: '#2d5f8a',
     tags: ['Lago di Tovel', 'דולומיטים', 'אגם טורקיז'],
     schedule: [
-      { text: 'נסיעה לכיוון ההרים' },
-      { text: 'אגם טובל — נוף טורקיז מדהים' },
-      { text: 'הליכה קצרה / פיקניק ליד האגם' },
-      { text: 'חזרה לריבה' },
+      { text: 'ארוחת בוקר במלון בריבה דל גארדה' },
+      { text: 'יציאה בבוקר לנסיעה לכיוון אגם טובל' },
+      { text: 'הגעה לאגם בשעות הבוקר המאוחרות — טיול רגוע סביב המים ועצירות לתצפיות' },
+      { text: 'פיקניק או ארוחת צהריים קלה מול הנוף' },
+      { text: 'נסיעה חזרה לריבה דל גארדה בשעות הצהריים' },
     ],
-    tip: 'טבע בלי מאמץ גדול — שווה כל קילומטר',
     hotel: DU_LAC,
     locations: [
       {
@@ -250,12 +223,11 @@ export const days: Day[] = [
     color: '#c4613a',
     tags: ['לימונה סול גארדה', 'שייט', 'אגם גארדה'],
     schedule: [
-      { text: 'שייט על האגם או נסיעה לאורך החוף' },
-      { text: 'ביקור בלימונה סול גארדה' },
-      { text: 'סמטאות, גלידה, נוף לאגם' },
-      { text: 'עצירות קצרות בדרך חזרה לריבה' },
+      { text: 'ארוחת בוקר במלון בריבה דל גארדה' },
+      { text: '10:00 — שייט לכיוון לימונה סול גארדה' },
+      { text: '10:30–10:40 — הגעה ללימונה: שיטוט רגוע בסמטאות, עצירה לגלידה וישיבה מול האגם' },
+      { text: 'ארוחת צהריים באחת המסעדות המקומיות' },
     ],
-    tip: 'יום רגוע ועגול — ספוג את אגם גארדה לפני הסיום',
     hotel: DU_LAC,
     locations: [
       {
@@ -285,11 +257,11 @@ export const days: Day[] = [
     color: '#6b3d8a',
     tags: ['Lago di Ledro', 'מלפנסה', 'חזרה הביתה'],
     schedule: [
-      { text: "בוקר שקט — צ'ק אאוט מריבה" },
-      { text: 'עצירת תצפית קצרה באגם לדרו' },
-      { text: 'נסיעה ישירה לשדה התעופה מלפנסה' },
+      { text: "צ'ק אאוט מהמלון בריבה דל גארדה" },
+      { text: 'נסיעה לכיוון אגם לדרו — עצירה קצרה לתצפית ותמונות' },
+      { text: 'המשך נסיעה ישירה לשדה התעופה מלפנסה' },
+      { text: "צ'ק אין לשרתון מילאנו מלפנסה ללילה" },
     ],
-    tip: 'לצאת בזמן! סיום רגוע ולא לחוץ',
     hotel: SHERATON,
     locations: [
       {

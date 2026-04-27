@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { Star } from 'lucide-react';
 
 function ItalianFlag({ className = '' }: { className?: string }) {
   return (
@@ -15,7 +16,11 @@ function ItalianFlag({ className = '' }: { className?: string }) {
   );
 }
 
-export default function Header() {
+interface HeaderProps {
+  onOpenRecommendations: () => void;
+}
+
+export default function Header({ onOpenRecommendations }: HeaderProps) {
   return (
     <header
       className="relative flex-shrink-0 overflow-hidden text-white"
@@ -36,7 +41,7 @@ export default function Header() {
         }}
       />
 
-      <div className="relative mx-auto flex max-w-[1440px] items-center gap-4 px-4 py-4 sm:px-8 sm:py-5 lg:py-6">
+      <div className="relative mx-auto flex max-w-[1440px] items-center justify-between gap-4 px-4 py-4 sm:px-8 sm:py-5 lg:py-6">
         <motion.div
           className="flex min-w-0 items-center gap-3 sm:gap-5"
           initial={{ opacity: 0, y: -14 }}
@@ -55,6 +60,19 @@ export default function Header() {
             <p className="mt-0.5 text-[11px] text-white/65 tracking-wide">אגם גארדה</p>
           </div>
         </motion.div>
+
+        <motion.button
+          onClick={onOpenRecommendations}
+          initial={{ opacity: 0, y: -14 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.55, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+          whileHover={{ scale: 1.04 }}
+          whileTap={{ scale: 0.97 }}
+          className="inline-flex shrink-0 items-center gap-2 rounded-full border border-white/30 bg-white/15 px-4 py-2 text-sm font-bold text-white backdrop-blur-sm hover:bg-white/25 transition-colors"
+        >
+          <Star size={15} className="fill-white/80" />
+          המלצות
+        </motion.button>
       </div>
 
       <div className="absolute bottom-0 left-0 right-0 h-px bg-white/20" />

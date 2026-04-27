@@ -64,7 +64,7 @@ interface Props {
 
 export default function MapView({ days, selectedDay, onSelectDay }: Props) {
   return (
-    <MapContainer center={[45.72, 10.78]} zoom={10} className="h-full w-full">
+    <MapContainer key="main-map" center={[45.72, 10.78]} zoom={10} className="h-full w-full">
       <TileLayer
         url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
         attribution="© OpenStreetMap © CARTO"

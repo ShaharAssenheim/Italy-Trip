@@ -4,6 +4,7 @@ import dynamic from 'next/dynamic';
 import { useState } from 'react';
 import Header from '@/components/Header';
 import Sidebar from '@/components/Sidebar';
+import RecommendationsModal from '@/components/RecommendationsModal';
 import { days } from '@/data/itinerary';
 
 // Leaflet must load client-side only (uses window)
@@ -21,6 +22,7 @@ const MapView = dynamic(() => import('@/components/MapView'), {
 
 export default function HomePage() {
   const [selectedDay, setSelectedDay] = useState<number | null>(null);
+  const [recommendationsOpen, setRecommendationsOpen] = useState(false);
 
   function handleSelectDay(id: number) {
     setSelectedDay((prev) => (prev === id || id === -1 ? null : id));
@@ -28,7 +30,10 @@ export default function HomePage() {
 
   return (
     <div className="flex h-screen flex-col overflow-hidden" dir="rtl">
-      <Header />
+      <Header onOpenRecommendations={() => setRecommendationsOpen(true)} />
+      {recommendationsOpen && (
+        <RecommendationsModal onClose={() => setRecommendationsOpen(false)} />
+      )}
 
       {/* ltr wrapper keeps map on left, sidebar on right regardless of RTL */}
       <main className="flex flex-1 flex-col overflow-hidden sm:flex-row" style={{ direction: 'ltr' }}>

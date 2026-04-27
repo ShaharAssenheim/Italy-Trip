@@ -1,7 +1,8 @@
 'use client';
 
+import { useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ExternalLink, MapPin, ChevronLeft, Lightbulb } from 'lucide-react';
+import { ExternalLink, MapPin, ChevronLeft } from 'lucide-react';
 import { Day } from '@/types';
 
 interface Props {
@@ -11,6 +12,14 @@ interface Props {
 }
 
 export default function DayCard({ day, isOpen, onToggle }: Props) {
+  const headerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (isOpen) {
+      headerRef.current?.scrollIntoView({ block: 'start', behavior: 'smooth' });
+    }
+  }, [isOpen]);
+
   return (
     <motion.div
       layout
@@ -19,7 +28,7 @@ export default function DayCard({ day, isOpen, onToggle }: Props) {
       onClick={onToggle}
     >
       {/* Header row */}
-      <div className="flex items-center gap-3 px-5 py-4">
+      <div ref={headerRef} className="flex items-center gap-3 px-5 py-4">
         <motion.div
           className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full text-xl text-white shadow-md"
           style={{ background: day.color }}
@@ -164,15 +173,6 @@ export default function DayCard({ day, isOpen, onToggle }: Props) {
                   )}
                 </div>
               )}
-
-              {/* Tip */}
-              <div
-                className="flex items-start gap-2 rounded-lg p-3 text-[12px] italic leading-snug"
-                style={{ background: '#fffbee', borderRight: '3px solid #d4a853' }}
-              >
-                <Lightbulb size={14} className="mt-0.5 flex-shrink-0 text-amber-500" />
-                <span className="text-amber-800">{day.tip}</span>
-              </div>
 
               {/* Hotel */}
               {day.hotel && (
