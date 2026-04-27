@@ -41,6 +41,8 @@ function RecommendationCard({ rec }: { rec: Recommendation }) {
           src={rec.imageUrl}
           alt={rec.name}
           className="h-40 w-full object-cover"
+          referrerPolicy="no-referrer"
+          crossOrigin="anonymous"
         />
       )}
       <div className="p-4 flex flex-col gap-2">
@@ -108,12 +110,12 @@ export default function RecommendationsModal({ onClose }: Props) {
         exit={{ opacity: 0 }}
         transition={{ duration: 0.2 }}
         className="fixed inset-0 bg-black/50 backdrop-blur-sm"
-        style={{ zIndex: 900 }}
+        style={{ zIndex: 1100 }}
         onClick={onClose}
       />
 
       {/* Modal */}
-      <div className="fixed inset-0 flex items-center justify-center p-4 sm:p-8" style={{ zIndex: 901 }} dir="rtl">
+      <div className="fixed inset-0 flex items-center justify-center p-4 sm:p-8" style={{ zIndex: 1101 }} dir="rtl">
         <motion.div
           key="panel"
           initial={{ opacity: 0, scale: 0.95, y: 20 }}
