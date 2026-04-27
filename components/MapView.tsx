@@ -1,10 +1,101 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
-import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
+import { useEffect, useRef, useState } from 'react';
+import { MapContainer, TileLayer, Marker, Popup, Polyline, Tooltip, useMap } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { Day } from '@/types';
+
+interface RouteData {
+  dayId: number;
+  color: string;
+  positions: [number, number][];
+  label?: string;
+}
+
+async function fetchRoute(day: Day): Promise<RouteData | null> {
+  const allPoints = [
+    ...(day.routeStart ? [day.routeStart] : []),
+    ...(day.routeWaypoints ?? []),
+    ...day.locations,
+  ];
+  if (allPoints.length < 2) return null;
+
+  const straightPositions: [number, number][] = allPoints.map((p) => [p.lat, p.lng]);
+
+  if (day.routeType === 'boat') {
+    return { dayId: day.id, color: day.color, positions: straightPositions, label: day.routeLabel };
+  }
+
+  const coords = allPoints.map((p) => `${p.lng},${p.lat}`).join(';');
+  try {
+    const res = await fetch(
+      `https://router.project-osrm.org/route/v1/driving/${coords}?overview=full&geometries=geojson`
+    );
+    const data = await res.json();
+    if (data.routes?.[0]?.geometry?.coordinates) {
+      const positions: [number, number][] = data.routes[0].geometry.coordinates.map(
+        ([lng, lat]: [number, number]) => [lat, lng]
+      );
+      return { dayId: day.id, color: day.color, positions, label: day.routeLabel };
+    }
+  } catch {
+    return { dayId: day.id, color: day.color, positions: straightPositions, label: day.routeLabel };
+  }
+  return null;
+}
+
+function RouteLayers({ days }: { days: Day[] }) {
+  const [routes, setRoutes] = useState<RouteData[]>([]);
+
+  useEffect(() => {
+    const daysWithRoutes = days.filter(
+      (d) => d.locations.length >= 2 || (d.routeStart && d.locations.length >= 1)
+    );
+    Promise.all(daysWithRoutes.map(fetchRoute)).then((results) => {
+      setRoutes(results.filter((r): r is RouteData => r !== null));
+    });
+  }, [days]);
+
+  return (
+    <>
+      {routes.map((route) => {
+        const day = days.find((d) => d.id === route.dayId);
+        const isBoat = day?.routeType === 'boat';
+        return (
+          <Polyline
+            key={route.dayId}
+            positions={route.positions}
+            pathOptions={
+              isBoat
+                ? { color: route.color, weight: 3, opacity: 0.6, dashArray: '4 8' }
+                : { color: route.color, weight: 4, opacity: 0.75, dashArray: '8 4' }
+            }
+          >
+            {route.label && (
+              <Tooltip
+                permanent
+                direction="top"
+                offset={[0, -4]}
+                opacity={1}
+              >
+                <span style={{
+                  fontFamily: 'Heebo, sans-serif',
+                  fontSize: '11px',
+                  fontWeight: 700,
+                  color: route.color,
+                  whiteSpace: 'nowrap',
+                }}>
+                  {route.label}
+                </span>
+              </Tooltip>
+            )}
+          </Polyline>
+        );
+      })}
+    </>
+  );
+}
 
 // Leaflet's default icon URLs break with Webpack — point to CDN instead
 delete (L.Icon.Default.prototype as unknown as Record<string, unknown>)._getIconUrl;
@@ -73,6 +164,7 @@ export default function MapView({ days, selectedDay, onSelectDay }: Props) {
       />
 
       <FlyController selectedDay={selectedDay} days={days} />
+      <RouteLayers days={days} />
 
       {days.map((day) =>
         day.locations.map((loc) => (

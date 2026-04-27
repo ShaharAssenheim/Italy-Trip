@@ -47,6 +47,8 @@ export const days: Day[] = [
   },
   {
     id: 2,
+    routeStart: { lat: 45.6306, lng: 8.7226 }, // מלפנסה
+    routeLabel: 'כ-2 שעות | כ-1:20',
     emoji: '🚗',
     title: 'נסיעה + סירמיונה + הגעה לריבה',
     color: '#1a6b8a',
@@ -69,7 +71,7 @@ export const days: Day[] = [
         lng: 10.6077,
         description: 'חצי אי ציורי עם טירה מימי הביניים',
         image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Italy_-_Sirmione_-_Scaligero_Castle.jpg/330px-Italy_-_Sirmione_-_Scaligero_Castle.jpg',
-        driveTime: 'כ-1:20 שעות ממלפנסה',
+        driveTime: 'כ-2 שעות ממלפנסה',
         links: [
           {
             id: 'sirmione-map',
@@ -93,7 +95,7 @@ export const days: Day[] = [
         lng: 10.841,
         description: 'בסיס הטיול — עיר נמל בצפון האגם',
         image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Riva_del_garda_from_Torre_Apponale.JPG/330px-Riva_del_garda_from_Torre_Apponale.JPG',
-        driveTime: 'כ-1 שעה נוספת מסירמיונה',
+        driveTime: 'כ-1:20 שעות מסירמיונה',
         links: [
           {
             id: 'riva-map',
@@ -107,6 +109,8 @@ export const days: Day[] = [
   },
   {
     id: 3,
+    routeStart: { lat: 45.8847, lng: 10.841 }, // ריבה דל גארדה
+    routeLabel: 'כ-1 שעה',
     emoji: '🦁',
     title: 'ספארי — Parco Natura Viva',
     color: '#8b5e1a',
@@ -129,7 +133,7 @@ export const days: Day[] = [
         lng: 10.8474,
         description: 'פארק ספארי וגן חיות ליד ורונה',
         image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/ITALY_-_Tigre_Siberiana_-_Parco_Natura_Viva_-_Verona_1.JPG/330px-ITALY_-_Tigre_Siberiana_-_Parco_Natura_Viva_-_Verona_1.JPG',
-        driveTime: 'כ-55 דקות מריבה דל גארדה',
+        driveTime: 'כ-1 שעה מריבה דל גארדה',
         links: [
           {
             id: 'parco-map',
@@ -183,9 +187,11 @@ export const days: Day[] = [
   },
   {
     id: 5,
+    routeStart: { lat: 45.8847, lng: 10.841 }, // ריבה דל גארדה
+    routeLabel: 'כ-2 שעות',
     emoji: '🏔️',
     title: 'אגם טובל — דולומיטים',
-    color: '#2d5f8a',
+    color: '#c0392b',
     tags: ['Lago di Tovel', 'דולומיטים', 'אגם טורקיז'],
     schedule: [
       { text: 'ארוחת בוקר במלון בריבה דל גארדה' },
@@ -204,7 +210,7 @@ export const days: Day[] = [
         lng: 10.9467,
         description: 'אגם טורקיז בלב הדולומיטים',
         image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Lago_di_Tovel.JPG/330px-Lago_di_Tovel.JPG',
-        driveTime: 'כ-50 דקות מריבה דל גארדה',
+        driveTime: 'כ-2 שעות מריבה דל גארדה',
         links: [
           {
             id: 'tovel-map',
@@ -218,6 +224,10 @@ export const days: Day[] = [
   },
   {
     id: 6,
+    routeStart: { lat: 45.8847, lng: 10.841 }, // ריבה דל גארדה
+    routeWaypoints: [{ lat: 45.852, lng: 10.818 }], // אמצע האגם
+    routeType: 'boat',
+    routeLabel: '30 דק׳ ⛵',
     emoji: '🚤',
     title: 'לימונה + שייט באגם',
     color: '#c4613a',
@@ -253,6 +263,8 @@ export const days: Day[] = [
   {
     id: 7,
     emoji: '🛫',
+    routeStart: { lat: 45.8847, lng: 10.841 }, // ריבה דל גארדה
+    routeLabel: '20 דק׳ | כ-3 שעות',
     title: 'חזרה + אגם לדרו + מלפנסה',
     color: '#6b3d8a',
     tags: ['Lago di Ledro', 'מלפנסה', 'חזרה הביתה'],
@@ -272,7 +284,7 @@ export const days: Day[] = [
         lng: 10.7319,
         description: 'תצפית קצרה — אגם שקט ומרהיב',
         image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Lago_di_Ledro_-_crystal-clear_water.JPG/330px-Lago_di_Ledro_-_crystal-clear_water.JPG',
-        driveTime: 'כ-20 דקות מריבה דל גארדה',
+        driveTime: '20 דקות מריבה דל גארדה',
         links: [
           {
             id: 'ledro-map',
@@ -290,7 +302,7 @@ export const days: Day[] = [
         lng: 8.7226,
         description: 'שדה התעופה הבינלאומי של מילאנו',
         image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Milano_malpensa_terminal_1.JPG/330px-Milano_malpensa_terminal_1.JPG',
-        driveTime: 'כ-2 שעות מאגם לדרו',
+        driveTime: 'כ-3 שעות מאגם לדרו',
         links: [
           {
             id: 'mxp-dep-map',

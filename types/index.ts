@@ -34,27 +34,22 @@ export interface ScheduleItem {
   text: string;
 }
 
-export interface FlexOption {
-  title: string;
-  items: string[];
-}
-
 export interface DayHotel {
   nameHe: string;
   googleMapsUrl: string;
 }
 
 export interface Day {
+  routeStart?: { lat: number; lng: number };
+  routeWaypoints?: { lat: number; lng: number }[];
+  routeType?: 'boat';
+  routeLabel?: string;
   id: number;
   emoji: string;
   title: string;
   color: string;
   tags: string[];
   schedule: ScheduleItem[];
-  tip?: string;
   locations: Location[];
   hotel?: DayHotel;
-  isFlexible?: boolean;
-  optionA?: FlexOption;
-  optionB?: FlexOption;
 }

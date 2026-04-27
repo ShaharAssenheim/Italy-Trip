@@ -102,34 +102,8 @@ export default function DayCard({ day, isOpen, onToggle }: Props) {
                 </div>
               )}
 
-              {/* Schedule or flexible options */}
-              {day.isFlexible ? (
-                <div className="grid grid-cols-2 gap-2">
-                  {[day.optionA!, day.optionB!].map((opt) => (
-                    <div
-                      key={opt.title}
-                      className="rounded-xl border p-3"
-                      style={{ borderColor: `${day.color}30`, background: `${day.color}08` }}
-                    >
-                      <p className="mb-2 text-[11px] font-bold" style={{ color: day.color }}>
-                        {opt.title}
-                      </p>
-                      <ul className="space-y-1">
-                        {opt.items.map((item) => (
-                          <li key={item} className="flex items-start gap-1.5 text-[12px] text-stone-600">
-                            <span
-                              className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full"
-                              style={{ background: day.color }}
-                            />
-                            {item}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  ))}
-                </div>
-              ) : (
-                <ul className="space-y-2">
+              {/* Schedule */}
+              <ul className="space-y-2">
                   {day.schedule.map((item, i) => (
                     <motion.li
                       key={i}
@@ -146,7 +120,6 @@ export default function DayCard({ day, isOpen, onToggle }: Props) {
                     </motion.li>
                   ))}
                 </ul>
-              )}
 
               {/* Links */}
               {day.locations.some((l) => l.links.length > 0) && (
